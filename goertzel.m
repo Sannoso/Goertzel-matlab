@@ -12,3 +12,8 @@ else
     return
 end
 
+lfg = [697 770 852 941]; % Low frequency group
+hfg = [1209 1336 1477];  % High frequency group
+
+% Generate 12 frequency pairs
+frequencypairs   = [reshape(ones(3,1)*lfg,1,12); repmat(hfg,1,4)];
