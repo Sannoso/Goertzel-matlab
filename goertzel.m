@@ -36,3 +36,16 @@ estim_f = round(k*Fs/Nsamples);      % Frequencies at which the DFT is estimated
 
 
 stem(sounddata)
+%take subset from sounddata. from first DTMF keypress
+sampledata = sounddata(2200: 2200+Nsamples);
+%pause
+stem(sampledata)
+%pause
+dft_data = goertzel(sampledata, k);
+stem(original_frequencies, abs(dft_data));
+
+%layout of plot
+ax = gca; %handle to the current axes
+ax.XTick = original_frequencies;
+xlabel('Frequency (Hz)')
+title('DFT Magnitude')
