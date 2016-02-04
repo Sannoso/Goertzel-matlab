@@ -10,7 +10,7 @@
 clear all;
 
 % Read in the sound data
-[sounddata,Fsound] = audioread('dtmfA1.wav');
+[sounddata,Fsound] = audioread('tone_1.wav');
 Fs  = 8000;       % Sampling frequency 8 kHz
 
 if Fsound == Fs
@@ -46,13 +46,13 @@ estim_f = round(k*Fs/Nsamples);      % Frequencies at which the DFT is estimated
 
 stem(sounddata)
 %take subset from sounddata. from first DTMF keypress
-sampledata = sounddata(2200: 2200+Nsamples);
+%sampledata = sounddata(2200: 2200+Nsamples);
 %pause
-stem(sampledata)
+%stem(sampledata)
 %pause
-dft_data = goertzel(sampledata, k);
+dft_data = goertzel(sounddata, k);
+%stem(original_frequencies, abs(dft_data));
 stem(original_frequencies, abs(dft_data));
-
 %layout of plot
 ax = gca; %handle to the current axes
 ax.XTick = original_frequencies;
