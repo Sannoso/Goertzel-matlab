@@ -10,7 +10,14 @@
 clear all;
 
 % Read in the sound data
+%%{
 [sounddata,Fsound] = audioread('tone_1.wav');
+%}
+
+%{
+[sounddata, Fsound] = audioread('dtmfA1.wav');
+%}
+
 Fs  = 8000;       % Sampling frequency 8 kHz
 
 if Fsound == Fs
@@ -52,7 +59,7 @@ pause
 %{
 %specially for dtmfA1.wav
 %take subset from sounddata. from first DTMF keypress
-%sampledata = sounddata(2200: 2200+Nsamples);
+sounddata = sounddata(2200: 2200+Nsamples);
 %stem(sampledata)
 %pause
 %}
