@@ -43,15 +43,21 @@ original_frequencies = [lfg(:);hfg(:)];  % Original frequencies
 k = round((original_frequencies/Fs)*Nsamples);  % Indices of the DFT
 estim_f = round(k*Fs/Nsamples);      % Frequencies at which the DFT is estimated
 
-
+%{
+%debugging
 stem(sounddata)
+pause
+%}
+
+%{
+%specially for dtmfA1.wav
 %take subset from sounddata. from first DTMF keypress
 %sampledata = sounddata(2200: 2200+Nsamples);
-%pause
 %stem(sampledata)
 %pause
-dft_data = goertzel(sounddata, k);
-%stem(original_frequencies, abs(dft_data));
+%}
+
+dft_data = goertzel(sounddata(1:205), k+1); % Goertzel use 1-based indexing
 stem(original_frequencies, abs(dft_data));
 %layout of plot
 ax = gca; %handle to the current axes
