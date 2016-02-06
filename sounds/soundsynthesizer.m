@@ -3,7 +3,7 @@ clear all;
 
 symbol = {'1','2','3','4','5','6','7','8','9','*','0','#'};
 [tones, Fs, f, lfg, hfg] = helperDTMFToneGenerator(symbol, false);
-tones = tones(1:205,:); %we only need 205 samples, so truncate
+tones = tones(1:320,:); %the tone is 40ms = 320 samples at minimum, so truncate
 tones = tones/2; %scale all vectors to have min and max -1 ;+1
 
 %{
