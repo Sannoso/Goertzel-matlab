@@ -10,22 +10,22 @@
 clear all;
 
 % Read in the sound data
-%%{
-[sounddata,Fsound] = audioread('tone_1.wav');
-%}
+for toneChoice=1:12,
+    filename = strcat('tone_',num2str(toneChoice),'.wav');
 
-%{
-[sounddata, Fsound] = audioread('dtmfA1.wav');
-%}
+    [sounddata(:,toneChoice),Fsound] = audioread(filename);
 
-Fs  = 8000;       % Sampling frequency 8 kHz
 
-if Fsound == Fs
-    disp('The soundinput has the correct sampling frequency')
-else
-    disp('The soundinput does not match the 8KHz sampling frequency')
-    disp('Therefor the script is aborted')
-    return
+    Fs  = 8000;       % Sampling frequency 8 kHz
+    disp(strcat('Soundinput ', filename))
+    if Fsound == Fs
+        disp(' has the correct sampling frequency')
+    else
+        disp(' does not match the 8KHz sampling frequency')
+        disp('Therefor the script is aborted')
+        return
+    end
+
 end
 
 lfg = [697 770 852 941]; % Low frequency group
@@ -64,10 +64,19 @@ sounddata = sounddata(2200: 2200+Nsamples);
 %pause
 %}
 
-dft_data = goertzel(sounddata(1:205), k+1); % Goertzel use 1-based indexing
-stem(original_frequencies, abs(dft_data));
-%layout of plot
-ax = gca; %handle to the current axes
-ax.XTick = original_frequencies;
-xlabel('Frequency (Hz)')
-title('DFT Magnitude')
+
+for inputChoice=1:12,
+    %goertzel analysis on each tone
+    dft_data(:,inputChoice) = goertzel(sounddata(:,inputChoice), k+1); % Goertzel use 1-based indexing
+    
+    %plotting all of them
+    subplot(4,3, inputChoice), stem(original_frequencies, abs(dft_data(:,inputChoice)));
+    %title(['Symbol "', inputChoice,'": [',num2str(f(1,inputChoice)),',',num2str(f(2,inputChoice)),']'])
+    
+    %layout of plot
+    ax = gca; %handle to the current axes
+    ax.XTick = original_frequencies;
+    xlabel('Frequency (Hz)')
+    title(strcat('DFT Magnitudes tone nr: ', num2str(inputChoice)))
+
+end
