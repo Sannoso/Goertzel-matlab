@@ -11,7 +11,7 @@ clear all;
 
 % Read in the sound data
 for toneChoice=1:12,
-    filename = strcat('tone_',num2str(toneChoice),'.wav');
+    filename = strcat('sounds\tone_',num2str(toneChoice),'.wav');
 
     [sounddata(:,toneChoice),Fsound] = audioread(filename);
 
@@ -63,11 +63,11 @@ sounddata = sounddata(2200: 2200+Nsamples);
 %stem(sampledata)
 %pause
 %}
-
+%sounddata(1:205)
 
 for inputChoice=1:12,
     %goertzel analysis on each tone
-    dft_data(:,inputChoice) = goertzel(sounddata(:,inputChoice), k+1); % Goertzel use 1-based indexing
+    dft_data(:,inputChoice) = goertzel(sounddata(1:205,inputChoice), k+1); % Goertzel use 1-based indexing
     
     %plotting all of them
     subplot(4,3, inputChoice), stem(original_frequencies, abs(dft_data(:,inputChoice)));
