@@ -13,6 +13,6 @@ init;
 read_Audio;
 audio_Slicer;
 dtmf_Goertzel;
-%To-do:   categorization;
+categorization;
 %To-do:   display;
 
