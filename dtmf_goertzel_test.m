@@ -101,7 +101,7 @@ for i=1:7
 end
 
 %%{
-temp = zeros(2,7);
+temp = zeros(2,12);
 for j=1:12
     counter = 0;
     for i=1:7
