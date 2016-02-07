@@ -116,7 +116,7 @@ for j=1:12
     end
     for a=1:12
         if(temp(:,j) == frequencypairs(:,a))
-            disp(strcat('sounds nr: ', num2str(j), ' is the DTMF sound of the symbol :"', symbol(j),'" '))
+            disp(strcat('sounds nr: ', num2str(j), ' is the DTMF sound of the symbol :"', symbol(a),'" '))
         end
     end
 end
