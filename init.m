@@ -5,7 +5,7 @@
 %comment and uncomment to change the initialising values
 source = NamedConst.audiofile;
 %source = NamedConst.linein;
-audiofile = 'sounds\automatic(modem)dialling\dtmfA2.wav'; %name of audiofile
+audiofile = 'sounds\pi.wav'; %name of audiofile
 Fs  = 8000;       % Sampling frequency 8 kHz
 
 %%

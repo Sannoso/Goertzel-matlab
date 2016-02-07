@@ -10,6 +10,10 @@ if(source == NamedConst.audiofile)
         disp(' does not match the 8KHz sampling frequency')
         disp('Therefor the script is aborted')
     return
+    
+    %Scale the sounds to -1 and 1
+    %to-do: write a piece of code such that soft sounds will get results
+    %aswel.
 end
     
 elseif(source == NamedConst.linein)

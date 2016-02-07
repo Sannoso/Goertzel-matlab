@@ -1,4 +1,4 @@
-temp = zeros(2,amountofslices);
+tempresults = zeros(2,amountofslices);
 resultcounter = 0;
 result = zeros(1,2);
 for j=1:amountofslices
@@ -9,7 +9,7 @@ for j=1:amountofslices
             if(freqcounter >2) %check wether there are more then two frequencies present
                 disp(strcat('too many frequencies present in audioslice : ',num2str(j)))
             else
-                temp(freqcounter,j) = i;
+                tempresults(freqcounter,j) = i;
             end
         end
     end
@@ -17,7 +17,7 @@ for j=1:amountofslices
     if(freqcounter ==2)
         resultcounter = resultcounter +1;
         for a=1:12
-            if(temp(:,j) == frequencypairs(:,a))
+            if(tempresults(:,j) == frequencypairs(:,a))
                 result(resultcounter,1) = j;
                 result(resultcounter,2) = a;
                 disp(strcat('audioslice nr: ', num2str(j), ' contains the DTMF frequencies of the symbol :"', symbol(a),'" '));
@@ -26,3 +26,4 @@ for j=1:amountofslices
     end
     %}
 end
+disp('done with showing results')
