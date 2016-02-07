@@ -7,3 +7,6 @@ Soundfile dtmfA1.wav downloaded from: http://www.ee.columbia.edu/~dpwe/sounds/dt
 http://www.ee.columbia.edu/~dpwe/sounds/dtmf/dtmfA1.wav
 more soundfiles:
 http://www.ee.columbia.edu/~dpwe/sounds/
+
+made some DTMF testfiles at:
+http://www.audiocheck.net/audiocheck_dtmf.php
