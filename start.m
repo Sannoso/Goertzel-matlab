@@ -12,11 +12,7 @@ clear all;
 init;
 read_Audio;
 audio_Slicer;
-
-%{
-for i=1:length(slices) %pass all slices into the dtmf Goertzel algorithm
-    dtmf_Goertzel(sounddata(slices(i,1):slices(i,1)+Nsamples));
-end
-%}
-
+dtmf_Goertzel;
+%To-do:   categorization;
+%To-do:   display;
 
